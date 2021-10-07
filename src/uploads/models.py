@@ -25,7 +25,7 @@ class Upload(models.Model):
     
 
     def __str__(self):
-        return str(self.id)
+        return str(self.name)
 
     def save(self, *args, **kwargs):
         
