@@ -13,15 +13,17 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#enhance">Enhance</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <!-- Masthead-->
     <header class="masthead">
+        <!-- <div class="thirdaa"></div> -->
         <div class="container">
-            <div class="masthead-subheading">Are you insecure? hah! let's edit you photos and tease people</div>
-            <div class="masthead-heading text-uppercase">Image Enhancement</div>
+            <div class="masthead-subheading">Are you insecure coz you ugly? don't worry, as long as you're a good person</div>
+            <div class="masthead-heading text-uppercase">you still ugly</div>
             <a class="btn btn-primary btn-xl text-uppercase" href="#services">LET'S START</a>
         </div>
     </header>
@@ -85,7 +87,7 @@
         </div>
     </section>
     <!-- image upload -->
-    <section class="page-section" id="services">
+    <section class="page-section" id="enhance">
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Ready for it!</h2>
@@ -93,16 +95,16 @@
             <div id="alert-box">
 
             </div>
-            <div id="img-box">
+            <div id="img-box" class="text-center">
 
             </div>
             <form id="p-form" autocomplete="off">
                 {% csrf_token %}
                 {{form|crispy}}
-                <div class="not-visible" id="btn-box">
-                    <button type="submit" class="btn btn-primary" data-filter="NO_FILTER">No Filter</button>
-                    <button type="submit" class="btn btn-primary" data-filter="NEGATIVE">Negative</button>
-                    <button type="submit" class="btn btn-primary" data-filter="GREYSCALE">Greyscale</button>
+                <div id='btn-box' class="not-visible mt-2 mb-4">
+                    <button type="submit" class="btn btn-primary" data-filter='NO_FILTER'>No Filter</button>
+                    <button type="submit" class="btn btn-primary" data-filter='NEGATIVE'>Negative</button>
+                    <button type="submit" class="btn btn-primary" data-filter='GREYSCALE'>Greyscale</button>
                     <button type="submit" class="btn btn-primary" data-filter="BRIGHTENING">Brightening</button>
                     <button type="submit" class="btn btn-primary" data-filter="ARITMETIKA">Aritmetika</button>
                     <button type="submit" class="btn btn-primary" data-filter="BOOLEAN">Boolean</button>

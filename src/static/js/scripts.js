@@ -57,12 +57,15 @@ window.addEventListener('DOMContentLoaded', event => {
 const alertBox = document.getElementById('alert-box')
 const imgBox = document.getElementById('img-box')
 const form = document.getElementById('p-form')
-
-
 const image = document.getElementById('id_image')
+const btnBox = document.getElementById('btn-box')
 
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 console.log(csrf)
+
+const btns = [...btnBox.children]
+const mediaURL = window.location.href + 'media/'
+console.log(mediaURL)
 
 const url = ""
 
@@ -77,9 +80,17 @@ image.addEventListener('change', ()=>{
     const url = URL.createObjectURL(img_data)
     console.log(url)
     imgBox.innerHTML = `<img src="${url}" width="100%">`
-    // btnBox.classList.remove('not-visible')
+    btnBox.classList.remove('not-visible')
 })
 
+
+let filter = null
+btns.forEach(btn => btn.addEventListener('click', ()=>{
+    filter = btn.getAttribute('data-filter')
+    console.log(filter)
+}))
+
+let id = null
 form.addEventListener('submit', e=>{
     e.preventDefault()
 
@@ -87,6 +98,7 @@ form.addEventListener('submit', e=>{
     fd.append('csrfmiddlewaretoken', csrf[0].value)
     fd.append('image', image.files[0])
     fd.append('action', filter)
+    fd.append('id', id)
 
     $.ajax({
         type: 'POST',
@@ -94,15 +106,13 @@ form.addEventListener('submit', e=>{
         enctype: 'multipart/form-data',
         data: fd,
         success: function(response){
-            console.log(response)
+            const data = JSON.parse(response.data)
+            console.log(data)
+            imgBox.innerHTML = `<img src="${mediaURL + data[0].fields.image}" width="100%">`
             const sText = `successfully saved ${response.name}`
             handleAlerts('success', sText)
             setTimeout(()=>{
                 alertBox.innerHTML = ""
-                imgBox.innerHTML = ""
-                name.value = ""
-                description.value = ""
-                image.value = ""
             }, 3000)
         },
         error: function(error){

@@ -37,7 +37,7 @@ def boolean(image):
         image = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
     thresh, biner = cv2.threshold(image, 125, 255, cv2.THRESH_BINARY)
     notBooleanImage = cv2.bitwise_not(biner)
-    return 
+    return biner
     
 def rotation(image):
     shape = len(image.shape)
@@ -88,6 +88,6 @@ def get_filtered_image(image, action):
     elif action == 'ARITMETIKA':
         filtered = arithmetic(image)
     else:
-        pass
+        filtered = image
 
     return filtered
