@@ -305,6 +305,7 @@ svg {
 table {
   caption-side: bottom;
   border-collapse: collapse;
+  text-align-last: center;
 }
 
 caption {
@@ -11289,7 +11290,7 @@ p {
 }
 
 .page-section {
-  padding: 6rem 0;
+  padding: 1rem 0;
 }
 .page-section h2.section-heading, .page-section .section-heading.h2 {
   font-size: 2.5rem;
@@ -11769,6 +11770,12 @@ section#contact form#contactForm :-ms-input-placeholder {
   display: none
 }
 
-div.thirdaa {
-  background: rgba(20, 16, 0, 0.6);
+#enhance{
+  width: 100%;
+  min-height: 800px;
+}
+
+.tableBor{
+  display: flex;
+  justify-content: center;
 }

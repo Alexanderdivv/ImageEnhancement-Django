@@ -32,11 +32,14 @@ class Upload(models.Model):
         
         #open images
         pil_img = Image.open(self.image)
+        pil_img2 = Image.open(self.image2)
        
         #convert the image to array and do sime processing
         cv_img = np.array(pil_img)
         cv_img = cv_img.astype('uint8')
-        img = get_filtered_image(cv_img, self.action)
+        cv_img2 = np.array(pil_img2)
+        cv_img2 = cv_img2.astype('uint8')
+        img = get_filtered_image(cv_img, cv_img2, self.action)
 
         #stackoverflow
         
