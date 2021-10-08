@@ -56,8 +56,10 @@ window.addEventListener('DOMContentLoaded', event => {
 
 const alertBox = document.getElementById('alert-box')
 const imgBox = document.getElementById('img-box')
+const imgBox2 = document.getElementById('img-box2')
 const form = document.getElementById('p-form')
 const image = document.getElementById('id_image')
+const image2 = document.getElementById('id_image2')
 const btnBox = document.getElementById('btn-box')
 
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
@@ -83,6 +85,16 @@ image.addEventListener('change', ()=>{
     btnBox.classList.remove('not-visible')
 })
 
+if(image2){
+    image2.addEventListener('change', ()=>{
+        const img_data2 = image2.files[0]
+        const url2 = URL.createObjectURL(img_data2)
+        console.log(url2)
+        imgBox2.innerHTML = `<img src="${url2}" width="100%">`
+        btnBox.classList.remove('not-visible')
+    })
+}
+
 
 let filter = null
 btns.forEach(btn => btn.addEventListener('click', ()=>{
@@ -97,6 +109,9 @@ form.addEventListener('submit', e=>{
     const fd = new FormData()
     fd.append('csrfmiddlewaretoken', csrf[0].value)
     fd.append('image', image.files[0])
+    if(image2){
+        fd.append('image2', image2.files[0])
+    }
     fd.append('action', filter)
     fd.append('id', id)
 
@@ -109,6 +124,9 @@ form.addEventListener('submit', e=>{
             const data = JSON.parse(response.data)
             console.log(data)
             imgBox.innerHTML = `<img src="${mediaURL + data[0].fields.image}" width="100%">`
+            if(image2){
+                imgBox2.innerHTML = `<img src="${mediaURL + data[0].fields.image2}" width="100%">`
+            }
             const sText = `successfully saved ${response.name}`
             handleAlerts('success', sText)
             setTimeout(()=>{

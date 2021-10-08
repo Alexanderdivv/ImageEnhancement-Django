@@ -92,25 +92,46 @@
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Ready for it!</h2>
             </div>
-            <div id="alert-box">
-
-            </div>
-            <div id="img-box" class="text-center">
-
-            </div>
-            <form id="p-form" autocomplete="off">
-                {% csrf_token %}
-                {{form|crispy}}
-                <div id='btn-box' class="not-visible mt-2 mb-4">
-                    <button type="submit" class="btn btn-primary" data-filter='NO_FILTER'>No Filter</button>
-                    <button type="submit" class="btn btn-primary" data-filter='NEGATIVE'>Negative</button>
-                    <button type="submit" class="btn btn-primary" data-filter='GREYSCALE'>Greyscale</button>
-                    <button type="submit" class="btn btn-primary" data-filter="BRIGHTENING">Brightening</button>
-                    <button type="submit" class="btn btn-primary" data-filter="ARITMETIKA">Aritmetika</button>
-                    <button type="submit" class="btn btn-primary" data-filter="BOOLEAN">Boolean</button>
-                    <button type="submit" class="btn btn-primary" data-filter="GEOMETRI">Geometri</button>
-                </div>
-            </form>
+            <!-- table -->
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col" colspan="2">
+                        <div id="alert-box">
+                        </div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                        <div id="img-box" class="text-center">
+                        </div>
+                    </td>
+                    <td>
+                        <div id="img-box2" class="text-center">
+                        </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                        <form id="p-form" autocomplete="off">
+                            {% csrf_token %}
+                            {{form|crispy}}
+                            <div id='btn-box' class="not-visible mt-2 mb-4">
+                                <button type="submit" class="btn btn-primary" data-filter='NO_FILTER'>No Filter</button>
+                                <button type="submit" class="btn btn-primary" data-filter='NEGATIVE'>Negative</button>
+                                <button type="submit" class="btn btn-primary" data-filter='GREYSCALE'>Greyscale</button>
+                                <button type="submit" class="btn btn-primary" data-filter="BRIGHTENING">Brightening</button>
+                                <button type="submit" class="btn btn-primary" data-filter="ARITMETIKA">Aritmetika</button>
+                                <button type="submit" class="btn btn-primary" data-filter="BOOLEAN">Boolean</button>
+                                <button type="submit" class="btn btn-primary" data-filter="GEOMETRI">Geometri</button>
+                            </div>
+                        </form>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
         </div>
     </section>
     <!-- Footer-->
