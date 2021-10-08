@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Image-Enhancement
 Kode Program untuk Pengolahan Citra Digital
 
@@ -81,3 +82,4 @@ $ cd WebContent/IQE_site/
 ```
 $ python3 manage.py runserver
 ```
+
