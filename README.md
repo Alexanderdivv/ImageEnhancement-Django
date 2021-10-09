@@ -51,7 +51,7 @@ $ python3 test_model.py use_gpu=false
 1. Clone the Github Repository
 
 ```
-$ git clone https://github.com/Leo-Adlakha/IQE && cd IQE/
+$ git clone https://github.com/Alexanderdivv/ImageEnhancement-Django.git && cd ImageEnhancement-Django/
 ```
 
 2. Create a new Environment for the Project using virtualenv
