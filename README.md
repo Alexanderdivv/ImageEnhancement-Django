@@ -74,7 +74,7 @@ $ pip install -r requirements.txt
 4. Change Directory to run the Django Server
 
 ```
-$ cd WebContent/IQE_site/
+$ cd src/
 ```
 
 5. Run server on your machine
