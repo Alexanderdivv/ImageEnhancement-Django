@@ -53,7 +53,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 
-
+// initialization
 const alertBox = document.getElementById('alert-box')
 const imgBox = document.getElementById('img-box')
 const imgBox2 = document.getElementById('img-box2')
@@ -65,56 +65,61 @@ const btnBox = document.getElementById('btn-box')
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 console.log(csrf)
 
+// array for all buttons
 const btns = [...btnBox.children]
+// take back and save image from storage
 const mediaURL = window.location.href + 'media/'
 console.log(mediaURL)
 
 const url = ""
 
+// alert
 const handleAlerts = (type, text) =>{
     alertBox.innerHTML = `<div class="alert alert-${type}" role="alert">
                             ${text}
                         </div>`
 }
 
+// if there's change in id_image, so
 image.addEventListener('change', ()=>{
-    const img_data = image.files[0]
+    const img_data = image.files[0] //blob
     const url = URL.createObjectURL(img_data)
     console.log(url)
     imgBox.innerHTML = `<img src="${url}" width="100%">`
     btnBox.classList.remove('not-visible')
 })
 
-if(image2){
-    image2.addEventListener('change', ()=>{
-        const img_data2 = image2.files[0]
-        const url2 = URL.createObjectURL(img_data2)
-        console.log(url2)
-        imgBox2.innerHTML = `<img src="${url2}" width="100%">`
-        btnBox.classList.remove('not-visible')
+// same w the top, but for id_image 2
+image2.addEventListener('change', ()=>{
+    const img_data2 = image2.files[0]
+    const url2 = URL.createObjectURL(img_data2)
+    console.log(url2)
+    imgBox2.innerHTML = `<img src="${url2}" width="100%">`
     })
-}
-
-
+    
+// get the filter from which botton clicked
 let filter = null
 btns.forEach(btn => btn.addEventListener('click', ()=>{
     filter = btn.getAttribute('data-filter')
     console.log(filter)
 }))
 
+// gather the data and send using AJAX
 let id = null
 form.addEventListener('submit', e=>{
     e.preventDefault()
 
+    // Create new instance contain all data
     const fd = new FormData()
     fd.append('csrfmiddlewaretoken', csrf[0].value)
     fd.append('image', image.files[0])
+    fd.append('image2', image.files[0])
+    fd.append('action', filter)
+    fd.append('id', id)
     if(image2){
         fd.append('image2', image2.files[0])
     }
-    fd.append('action', filter)
-    fd.append('id', id)
-
+    // gather using ajax
     $.ajax({
         type: 'POST',
         url: url,
@@ -124,9 +129,10 @@ form.addEventListener('submit', e=>{
             const data = JSON.parse(response.data)
             console.log(data)
             imgBox.innerHTML = `<img src="${mediaURL + data[0].fields.image}" width="100%">`
-            if(image2){
-                imgBox2.innerHTML = `<img src="${mediaURL + data[0].fields.image2}" width="100%">`
-            }
+            // though that we just show image result in 1 place.
+            // if(image2){
+            //     imgBox2.innerHTML = `<img src="${mediaURL + data[0].fields.image}" width="100%">`
+            // }
             const sText = `successfully saved ${response.name}`
             handleAlerts('success', sText)
             setTimeout(()=>{

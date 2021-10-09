@@ -53,13 +53,19 @@ def rotation(image):
     rotate=rotate.astype("uint8")
     return rotate
 
-def arithmetic(image):
+def arithmetic(image,image2):
+    x = 350
+    y = 350
     shape = len(image.shape)
+    shape2 = len(image2.shape)
     if shape==3:
         image = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
-    y, x = image.shape
+    if shape2==3:
+        image2 = cv2.cvtColor(image2,cv2.COLOR_BGR2GRAY)
+    down_points = (x, y)
+    image = cv2.resize(image, down_points, interpolation= cv2.INTER_LINEAR)
+    image2 = cv2.resize(image2, down_points, interpolation= cv2.INTER_LINEAR)
     resultImage = np.zeros( (y,x), dtype="uint8" )
-    image2 = np.random.randint(256, size=(y, x), dtype="uint8")
     for i in range(y):
         for j in range(x):
             temp = image[i,j] + image2[i,j]
@@ -70,7 +76,7 @@ def arithmetic(image):
     resultImage=resultImage.astype("uint8")
     return resultImage
 
-def get_filtered_image(image, action):
+def get_filtered_image(image, image2, action):
     # img = cv2.cvtColor(image, cv2.COLOR)
     if action == 'NO_FILTER':
         filtered = image
@@ -86,7 +92,7 @@ def get_filtered_image(image, action):
     elif action == 'GEOMETRI':
         filtered = rotation(image)
     elif action == 'ARITMETIKA':
-        filtered = arithmetic(image)
+        filtered = arithmetic(image, image2)
     else:
         filtered = image
 
