@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Image-Enhancement
 Kode Program untuk Pengolahan Citra Digital
 
@@ -34,7 +33,7 @@ $ pip install -r requirements.txt
 4. Change Directory to that of test_model.py
 
 ```
-$ cd MachineLearningContent/Final\ Code/
+$ cd Image-Enhancement/
 ```
 
 5. Run the model
@@ -43,7 +42,7 @@ $ cd MachineLearningContent/Final\ Code/
 For ex -
 
 ```
-$ python3 test_model.py use_gpu=false
+$ python3 PCD.ipynb use_gpu=false
 ```
 
 ### For WebSite
