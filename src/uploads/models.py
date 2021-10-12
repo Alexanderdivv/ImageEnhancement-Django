@@ -21,6 +21,7 @@ class Upload(models.Model):
     image = models.ImageField(upload_to='images')
     image2 = models.ImageField(upload_to='images', blank=True, null=True)
     action = models.CharField(max_length=50, choices=ACTION_CHOICES, null=True)
+    customRange = models.IntegerField(default=0)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     
@@ -46,7 +47,7 @@ class Upload(models.Model):
         cv_img = cv_img.astype('uint8')
         cv_img2 = np.array(pil_img2)
         cv_img2 = cv_img2.astype('uint8')
-        img = get_filtered_image(cv_img, cv_img2, self.action)
+        img = get_filtered_image(cv_img, cv_img2, self.action, self.customRange)
 
         #stackoverflow
         

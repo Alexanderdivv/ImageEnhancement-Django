@@ -61,6 +61,9 @@ const form = document.getElementById('p-form')
 const image = document.getElementById('id_image')
 const image2 = document.getElementById('id_image2')
 const btnBox = document.getElementById('btn-box')
+const customRange = document.getElementById('customRange')
+const customRange3 = document.getElementById('customRange3')
+const outputRange = document.getElementById('rangeOutputId')
 
 const csrf = document.getElementsByName('csrfmiddlewaretoken')
 console.log(csrf)
@@ -87,6 +90,7 @@ image.addEventListener('change', ()=>{
     console.log(url)
     imgBox.innerHTML = `<img src="${url}" width="100%">`
     btnBox.classList.remove('not-visible')
+    customRange.classList.remove('not-visible')
 })
 
 // same w the top, but for id_image 2
@@ -104,6 +108,22 @@ btns.forEach(btn => btn.addEventListener('click', ()=>{
     console.log(filter)
 }))
 
+//if brigthening, showing range and set valuelet
+let customRangeVal = 0
+customRange3.onchange = function(event){
+  outputRange.innerHTML = customRange3.value;
+  console.log(customRange3.value)
+  customRangeVal = customRange3.value
+}
+
+
+
+let pixel = outputRange.value
+// if (filter != 'BRIGHTENING'){
+//     pixel
+// }
+console.log(pixel)
+
 // gather the data and send using AJAX
 let id = null
 form.addEventListener('submit', e=>{
@@ -114,6 +134,7 @@ form.addEventListener('submit', e=>{
     fd.append('csrfmiddlewaretoken', csrf[0].value)
     fd.append('image', image.files[0])
     fd.append('image2', image.files[0])
+    fd.append('customRange', customRangeVal)
     fd.append('action', filter)
     fd.append('id', id)
     if(image2){

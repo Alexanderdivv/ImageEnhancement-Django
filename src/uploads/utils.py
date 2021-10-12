@@ -13,7 +13,7 @@ def negative(image):
     negative=negative.astype("uint8")
     return negative
 
-def brightening(image):
+def brightening(image, customRange):
     shape = len(image.shape)
     if shape==3:
         image = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
@@ -21,7 +21,7 @@ def brightening(image):
     bright = np.zeros( (y,x), dtype="uint8" )
     for i in range(y):
         for j in range(x):
-            temp = image[i,j] + 100
+            temp = image[i,j] + customRange
             if (temp<0):
                 bright[i,j] = 0
             elif (temp>255):
@@ -76,7 +76,7 @@ def arithmetic(image,image2):
     resultImage=resultImage.astype("uint8")
     return resultImage
 
-def get_filtered_image(image, image2, action):
+def get_filtered_image(image, image2, action, customRange):
     # img = cv2.cvtColor(image, cv2.COLOR)
     if action == 'NO_FILTER':
         filtered = image
@@ -86,7 +86,7 @@ def get_filtered_image(image, image2, action):
     elif action == 'NEGATIVE':
         filtered = negative(image)
     elif action == 'BRIGHTENING':
-        filtered = brightening(image)
+        filtered = brightening(image, customRange)
     elif action == 'BOOLEAN':
         filtered = boolean(image)
     elif action == 'GEOMETRI':

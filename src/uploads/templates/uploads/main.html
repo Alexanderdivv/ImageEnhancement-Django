@@ -131,6 +131,11 @@
                             <form id="p-form" autocomplete="off">
                                 {% csrf_token %}
                                 {{form|crispy}}
+                                <div id='customRange' class="not-visible mt-2 mb-4" >
+                                    <label for="customRange3">Pixel for Brightening</label>
+                                    <input type="range" class="custom-range" min="0" max="100" step="10" id="customRange3">
+                                    <output name="rangeOutput" id="rangeOutputId">50</output>
+                                </div>
                                 <div id='btn-box' class="not-visible mt-2 mb-4">
                                     <button type="submit" class="btn btn-primary" data-filter='NO_FILTER'>No Filter</button>
                                     <button type="submit" class="btn btn-primary" data-filter='NEGATIVE'>Negative</button>
