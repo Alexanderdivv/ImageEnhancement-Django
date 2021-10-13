@@ -134,7 +134,7 @@ form.addEventListener('submit', e=>{
     fd.append('csrfmiddlewaretoken', csrf[0].value)
     fd.append('image', image.files[0])
     fd.append('image2', image.files[0])
-    fd.append('customRange', customRange3.value)
+    fd.append('customRange3', customRange3.value)
     fd.append('action', filter)
     fd.append('id', id)
     if(image2){

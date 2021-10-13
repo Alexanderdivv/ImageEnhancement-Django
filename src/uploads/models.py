@@ -21,7 +21,7 @@ class Upload(models.Model):
     image = models.ImageField(upload_to='images')
     image2 = models.ImageField(upload_to='images', blank=True, null=True)
     action = models.CharField(max_length=50, choices=ACTION_CHOICES, null=True)
-    customRange3 = models.IntegerField(default=100)
+    customRange3 = models.IntegerField(default=False)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
     

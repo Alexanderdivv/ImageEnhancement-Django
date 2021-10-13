@@ -12,6 +12,7 @@ def upload_add_view(request):
     if request.is_ajax():
         pic_id = json.loads(request.POST.get('id'))
         action = request.POST.get('action')
+        customRange3 = request.POST.get('customRange3')
 
         if pic_id is None:
             if form.is_valid():
@@ -21,6 +22,7 @@ def upload_add_view(request):
             obj = Upload.objects.get(id=pic_id)
         
         obj.action = action
+        obj.customRange3 = customRange3
         obj.save()
         data = serializers.serialize('json', [obj])
         return JsonResponse({'data': data})
