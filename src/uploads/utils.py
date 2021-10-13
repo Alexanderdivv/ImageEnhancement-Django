@@ -37,7 +37,7 @@ def boolean(image):
         image = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
     thresh, biner = cv2.threshold(image, 125, 255, cv2.THRESH_BINARY)
     notBooleanImage = cv2.bitwise_not(biner)
-    return biner
+    return notBooleanImage
     
 def rotation(image):
     shape = len(image.shape)
