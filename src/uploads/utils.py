@@ -21,7 +21,7 @@ def brightening(image, customRange):
     bright = np.zeros( (y,x), dtype="uint8" )
     for i in range(y):
         for j in range(x):
-            temp = image[i,j] + customRange
+            temp = image[i,j] + int(customRange)
             if (temp<0):
                 bright[i,j] = 0
             elif (temp>255):

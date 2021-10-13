@@ -109,7 +109,7 @@ btns.forEach(btn => btn.addEventListener('click', ()=>{
 }))
 
 //if brigthening, showing range and set valuelet
-let customRangeVal = 0
+let customRangeVal = 100
 customRange3.onchange = function(event){
   outputRange.innerHTML = customRange3.value;
   console.log(customRange3.value)
@@ -134,7 +134,7 @@ form.addEventListener('submit', e=>{
     fd.append('csrfmiddlewaretoken', csrf[0].value)
     fd.append('image', image.files[0])
     fd.append('image2', image.files[0])
-    fd.append('customRange', customRangeVal)
+    fd.append('customRange', customRange3.value)
     fd.append('action', filter)
     fd.append('id', id)
     if(image2){
