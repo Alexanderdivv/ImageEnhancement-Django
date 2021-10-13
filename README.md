@@ -82,3 +82,4 @@ $ cd src/
 $ python3 manage.py runserver
 ```
 
+6. Open the website from browser
